@@ -142,42 +142,24 @@ class AutoGridLogic {
   private getGridItemDimensions(config: ItemDimensionsConfig): Dimensions {
     console.log({ config });
 
-    // let height = 100;
-    // let width = height * config.requirements.aspectRatio;
+    let height = 100;
+    let width = height * config.requirements.aspectRatio;
 
     const areaOfContainer = config.parentHeight * config.parentWidth;
     console.log({ areaOfContainer });
-    // let areaOfDiv = areaOfContainer / config.childrenCount;
-    // let heightDiv = Math.sqrt(areaOfDiv);
-    // let widthDiv = areaOfDiv / heightDiv;
 
-    let areaOfBoxes = 0;
-    let height = 100;
-    let width = 0;
+    let areaOfDivs = 0;
     let divHeight = 0;
 
-    // while (areaOfBoxes < areaOfContainer) {
-    //   height = height + 1;
-    //   width = height * config.requirements.aspectRatio;
-    //   areaOfBoxes = height * width * config.childrenCount;
-    //   console.log(areaOfBoxes);
-    // }
-
-    for (height = 100; areaOfBoxes < areaOfContainer; height++) {
+    for (height; areaOfDivs < areaOfContainer; height++) {
       divHeight = height / config.childrenCount;
       width = height * config.requirements.aspectRatio;
-      areaOfBoxes = height * width * config.childrenCount;
+      areaOfDivs = divHeight * width * config.childrenCount;
     }
 
-    console.log(config.requirements.aspectRatio);
     console.log(divHeight);
     console.log(width);
-    console.log(areaOfBoxes);
-
-    //console.log(areaOfContainer);
-
-    // let numberOfColumns = config.parentHeight / lengthDiv;
-    // let numberOfRows = config.parentWidth / lengthDiv;
+    console.log(areaOfDivs);
 
     return {
       width,
